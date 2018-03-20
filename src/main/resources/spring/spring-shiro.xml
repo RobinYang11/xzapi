@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!-- 使用spring组件扫描@service  -->
+    <context:component-scan base-package="com.xianzhi.service"/>
+    <!-- 自定义域realm -->
+    <bean id="custom_Realm" class="com.xianzhi.realm.CustomRealm"></bean>
+    
+    <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+    	  <property name="realms" >
+    	 	<list>
+    	 		<ref bean="custom_Realm" /> 
+    	 	</list>
+    	 </property>
+    </bean>
+    
+    
+    <bean id="authorizer" class="org.apache.shiro.authz.ModularRealmAuthorizer">
+    	 <property name="realms" >
+    	 	<list>
+    	 		<ref bean="custom_Realm" /> 
+    	 	</list>
+    	 </property>
+    	 
+    </bean>
+    
+    <!-- 安全管理器  ref对象-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="authorizer" ref="authorizer" />
+        <property name="authenticator" ref="authenticator" />
+    </bean>
+    <!--JWT filter -->
+    <bean id="JwtFilter" class="com.xianzhi.utils.JwtFilter"></bean>  
+    <!-- shiro filter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+    	<property name="filters">    
+           <map>    
+               <entry key="JwtFilter" value-ref="JwtFilter"/>  
+           </map>    
+       </property> 
+        <!-- 安全管理器必须的 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 身份认证失败   认证提交的地址 -->
+        <property name="loginUrl" value="/login.html"/>
+        <!-- 权限认证失败    没有权限认证提交的地址 -->
+        <property name="unauthorizedUrl" value="/a.jsp"/>
+        <!-- Shiro连接约束配置,即过滤链的定义 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 对静态资源设置匿名访问 -->
+                / = anon
+                /login*=anon
+                <!-- /** = authc 所有url都必须认证通过才可以访问 -->
+                
+          
+                
+                /b.jsp=JwtFilter[ad_manager]
+                
+                
+                
+                /c.jsp =roles[ad_manager]
+                
+                /d.jsp =roles[guest]
+                
+                /e.jsp = roles[test]
+                
+                
+            </value>
+        </property>
+    </bean>
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+</beans>

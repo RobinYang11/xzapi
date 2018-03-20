@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.GoodUnitDao">
+	
+
+	<insert id="insertGoodUnit" parameterType="com.xianzhi.bean.GoodUnitBean"
+		useGeneratedKeys="true" keyProperty="goodUnitId" keyColumn="goodUnitId">
+		INSERT INTO
+			good_unit(good_unit_id,good_unit_name)
+		VALUES
+			(#{goodUnitId},#{goodUnitName});
+			
+	</insert>
+	<select id="getAllGoodUnit"  resultType="com.xianzhi.bean.GoodUnitBean">
+		SELECT
+			*
+		FROM
+			good_unit
+	</select>
+	
+	
+</mapper>
+    

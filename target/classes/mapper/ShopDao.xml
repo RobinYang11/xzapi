@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.ShopDao">
+	<resultMap id="shopMap" type="com.xianzhi.bean.ShopBean">
+		<id column="shop_id" property="shopId" />
+		<result column="shop_name" property="shopName" />
+		<result column="shop_area" property="shopArea" />
+		<result column="shop_owner" property="shopOwner" />
+		<result column="shop_type" property="shopType" />
+		<result column="shop_desc" property="shopDesc" />
+		<result column="shop_register_time" property="shopRegisterTime" />
+		<result column="shop_online_time" property="shopOnlineTime" />
+		<result column="shop_rent_time" property="shopRentTime" />
+		<result column="shop_status" property="shopStatus" />
+		<result column="shop_status_desc" property="shopStatusDesc" />
+		
+		<association property="shop_area" column="shopArea"
+			javaType="com.xianzhi.bean.AreaBean">
+			<id column="areaId" property="area_id" />
+			<result column="area_name" property="areaName" />
+			<result column="area_add_time" property="aeraAddTime" />
+			<result column="area_lastedit_time" property="areaLastEditTime" />
+		</association>
+		<collection property="shopOwner" column="shop_owner"
+			ofType="com.xianzhi.bean.UserInfoBean"     >
+			<id column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+			<result column="user_email" property="userEmail" />
+			<result column="user_phone" property="userPhone" />
+			<result column="user_sex" property="userSex" />
+			<result column="user_register_time" property="userRegisterTime" />
+			<result column="user_profile" property="userProfile" />
+		</collection>
+	</resultMap>
+
+
+	<insert id="insertShop" parameterType="com.xianzhi.bean.ShopBean"
+		useGeneratedKeys="true" keyProperty="shopId" keyColumn="shopId">
+		INSERT INTO
+			shop(shop_name,shop_area,
+			shop_owner,shop_type,shop_desc,shop_register_time,
+			shop_online_time,shop_rent_time,shop_status,shop_status_desc)
+		VALUES
+			(#{shopName},#{shopArea.area_id},#{shopOwner.user_id},
+			#{shopType},#{shopDesc},#{shopRegisterTime},#{shopOnlineTime},
+			#{shopRentTime},#{shopStatus},#{shopStatusDesc}
+		)
+	</insert>
+	
+	<select id="getShopByPage" parameterType="int" resultType="com.xianzhi.bean.ShopBean">
+		SELECT
+			shop_id,
+			shop_name,
+			shop_area,
+			shop_owner,
+			shop_type,
+			shop_desc,
+			shop_register_time,
+			shop_online_time,
+			shop_rent_time,
+			shop_status,
+			shop_status_desc,
+			
+		FROM
+			shop			
+		LIMIT #{page},#{offset};
+	</select>
+</mapper>
+    

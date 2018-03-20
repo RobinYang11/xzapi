@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.GoodTypeDao">
+	
+
+	<insert id="insertGoodType" parameterType="com.xianzhi.bean.GoodTypeBean"
+		useGeneratedKeys="true" keyProperty="goodTypeId" keyColumn="goodTypeId">
+		
+		INSERT INTO  good_type
+			(goods_type_id,goods_type_name)
+		VALUES
+			(#{goodTypeId},#{goodTypeName})
+			
+	</insert>
+	
+	<select id="getAllGoodType" resultType="com.xianzhi.bean.GoodTypeBean">
+		SELECT 
+			*
+		FROM 
+		   good_type
+	</select>
+	
+</mapper>
+    

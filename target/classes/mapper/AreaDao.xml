@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.TestDao">
+
+	<insert id="insertArea" parameterType="com.xianzhi.bean.AreaBean" 
+	useGeneratedKeys="true" keyProperty="AreaId" keyColumn="AreaId">
+	
+		INSERT INTO  good_type
+			(area_id,area_name,area_add_time,area_lastedit_time)
+		VALUES
+			(#{area_id},#{area_name},#{area_add_time},#{area_lastedit_time})
+	</insert>
+	
+	<select id="getAreaById"  parameterType="int" resultType="com.xianzhi.bean.AreaBean">
+		SELECT 
+			*
+		FROM 
+		   area
+		WHERE 
+			area_id=#{id}
+	</select>
+	
+	
+	
+</mapper>
+    

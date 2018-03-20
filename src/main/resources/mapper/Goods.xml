@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.GoodsDao">
+	<resultMap id="goodsMap" type="com.xianzhi.bean.GoodsBean">
+		<id column="good_id" property="goodId" />
+		<result column="good_name" property="goodName" />
+		<result column="good_other_name" property="goodOtherName" />
+		<result column="good_price" property="goodPrice" />
+		<result column="good_discount" property="goodDiscount" />
+		<result column="good_status" property="goodStatus" />
+		<result column="good_brand" property="goodBrand" />
+		<result column="good_remark" property="goodRemark" />
+		<result column="good_validity_period" property="goodValidityPeriod" />
+		<result column="good_grow_place" property="goodGrowPlace" />
+		<result column="good_manufacture" property="goodManufacture" />
+		<association property="good_type" column="goodType"
+			javaType="com.xianzhi.bean.GoodTypeBean">
+			<id column="goods_type_id" property="goodTypeId" />
+			<result column="goods_type_name" property="goodTypeName" />
+		</association>
+		<association property="good_shop" column="goodShop"
+			javaType="com.xianzhi.bean.ShopBean">
+			<id column="shop_id" property="shopId" />
+			<result column="shop_owner" property="shopOwner" />
+			<result column="shop_name" property="shopName" />
+		</association>
+		<collection property="goodPicture" column="good_id"
+			ofType="com.xianzhi.bean.GoodPictureBean"     >
+			<id column="good_pic_id" property="goodPicId" />
+			<result column="good_pic_path" property="goodPicPath" />
+			<result column="good_id" property="goodId" />
+		</collection>
+	</resultMap>
+
+
+	<insert id="insertGoods" parameterType="com.xianzhi.bean.GoodsBean"
+		useGeneratedKeys="true" keyProperty="goodId" keyColumn="goodId">
+		INSERT INTO
+			goods(good_type,good_shop,
+			good_name,good_other_name,good_unit,good_price,
+			good_discount,good_status,good_brand,good_validity_period,good_grow_place,good_manufacture)
+		VALUES
+			(#{goodType.goodTypeId},#{goodShop.shopId},#{goodName},
+			#{goodOtherName},#{goodUnit.goodUnitId},#{goodPrice},#{goodDiscount},
+			#{goodStatus},#{goodBrand},#{goodValidityPeriod},
+			#{goodGrowPlace},#{goodManufacture})
+	</insert>
+	<select id="getGoodsBypage" parameterType="int" resultType="com.xianzhi.bean.ShopBean">
+		SELECT
+			good_id,
+			good_type,
+			good_shop,
+			good_name,
+			good_other_name,
+			good_unit,
+			good_price,
+			good_discount,
+			good_status,
+			good_brand,
+			good_remark,
+			good_validity_period,
+			good_grow_place,
+			good_manufacture
+		FROM
+			goods
+		<where>
+			<if
+				test="goodsCondition.goodShop!=null
+				 and goodsCondition.goodShop.shopId!=null">
+				and shop_id = #{goodsCondition.shop.shopId}
+			</if>
+		</where>
+		LIMIT #{page},#{offset};
+	</select>
+</mapper>
+    
