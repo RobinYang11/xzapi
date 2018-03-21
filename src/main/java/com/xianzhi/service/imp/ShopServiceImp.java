@@ -25,4 +25,9 @@ public class ShopServiceImp implements ShopService {
 		return shopDao.getShopByPage(page, offset);
 	}
 
+	public int getTotalShopSize() {
+		// TODO Auto-generated method stub
+		return shopDao.getTotalShopSize();
+	}
+
 }

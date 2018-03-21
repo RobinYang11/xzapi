@@ -61,11 +61,17 @@
 			shop_online_time,
 			shop_rent_time,
 			shop_status,
-			shop_status_desc,
+			shop_status_desc
 			
 		FROM
 			shop			
 		LIMIT #{page},#{offset};
+	</select>
+	<select id="getTotalShopSize"  resultType="int">
+		SELECT
+			count(1)
+		FROM
+			shop			
 	</select>
 </mapper>
     

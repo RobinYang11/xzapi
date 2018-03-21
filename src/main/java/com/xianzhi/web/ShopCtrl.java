@@ -1,8 +1,11 @@
 package com.xianzhi.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xianzhi.bean.ShopBean;
@@ -16,16 +19,25 @@ public class ShopCtrl {
 	private ShopService shopService;
 
 	@RequestMapping(value = "/addShop", method = RequestMethod.POST)
-	public void registerShop(ShopBean shopBean) {
+	public int registerShop(ShopBean shopBean) {
 
-		shopService.insertSHop(shopBean);
+		return shopService.insertSHop(shopBean);
 
 	}
 
 	@RequestMapping(value = "/getShopByPage", method = RequestMethod.GET)
-	public void getShopByPage(int page, int offset) {
+	@ResponseBody
+	public List<ShopBean> getShopByPage(Integer page, Integer offset) {
+		List<ShopBean> sb;
+		sb = shopService.getSHopByPage(page, offset);
+		return sb;
+	}
 
-		shopService.getSHopByPage(page, offset);
+	@RequestMapping(value = "/getShopByPage", method = RequestMethod.GET)
+	@ResponseBody
+	public int getTotalShopSize() {
+
+		return shopService.getTotalShopSize();
 
 	}
 

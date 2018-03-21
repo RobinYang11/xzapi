@@ -12,6 +12,7 @@ public interface ShopDao {
 	
 	List<ShopBean> getShopByPage(@Param("page") int page, @Param("offset") int offset);
 	
+	int getTotalShopSize();
 	
 	
 }
