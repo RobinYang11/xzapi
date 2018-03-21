@@ -16,7 +16,9 @@ public interface GoodsDao {
 
 	GoodsBean getGoodsById(int goodId);
 
-	List<GoodsBean> getGoodsBypage(@Param("goodsCondition")GoodsBean goodsCondition,@Param("page")int page, @Param("offset")int offset);
+	List<GoodsBean> getGoodsBypage(@Param("page")int page, @Param("offset")int offset);
+	
+	int getTotalGoodSize();
 	
 	
 }

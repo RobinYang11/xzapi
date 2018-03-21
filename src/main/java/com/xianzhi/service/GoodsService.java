@@ -34,7 +34,7 @@ public interface GoodsService {
 	 * 分页查询商品 page 页数 offset 每页的数量
 	 */
 
-	List<GoodsBean> getGoodSByPage(GoodsBean goodsBean, int page, int offset);
+	List<GoodsBean> getGoodSByPage( int page, int offset);
 
 	/*
 	 * 增加商品分类
@@ -47,6 +47,12 @@ public interface GoodsService {
 	 */
 
 	int insertGoodUnit(GoodUnitBean goodUnitBean);
+	
+	/*
+	 * 获取商品总数
+	 */
+	
+	int getTotalGoodSize();
 	
 	
 }

@@ -44,9 +44,9 @@ public class GoodsServiceImp implements GoodsService {
 		return null;
 	}
 
-	public List<GoodsBean> getGoodSByPage(GoodsBean goodsBean, int page, int offset) {
+	public List<GoodsBean> getGoodSByPage( int page, int offset) {
 		// TODO Auto-generated method stub
-		return goodsDao.getGoodsBypage(goodsBean, page, offset);
+		return goodsDao.getGoodsBypage(page, offset);
 	}
 
 	public int insertGoodType(GoodTypeBean goodTypeBean) {
@@ -57,6 +57,11 @@ public class GoodsServiceImp implements GoodsService {
 	public int insertGoodUnit(GoodUnitBean goodUnitBean) {
 		// TODO Auto-generated method stub
 		return goodUnitDao.insertGoodUnit(goodUnitBean);
+	}
+
+	public int getTotalGoodSize() {
+		// TODO Auto-generated method stub
+		return goodsDao.getTotalGoodSize();
 	}
 
 }

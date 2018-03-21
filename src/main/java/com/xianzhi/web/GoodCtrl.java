@@ -30,12 +30,27 @@ public class GoodCtrl {
 	@Autowired
 	private GoodsService goodsService;
 	
+	
+	/*
+	 * 增加商品
+	 * */
+	
 	@RequestMapping(value="/addGood", method = RequestMethod.POST)
 	public void addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException
 	{
 		
 		System.out.println(goods.getGoodOtherName());
 		goodsService.insertGoods(goods);
+	}
+	
+	
+	/*
+	 * 分页查询商品
+	 * */
+	@RequestMapping(value="/getGoodSByPage", method = RequestMethod.GET)
+	public void addGoodType(Integer page, Integer offset)
+	{
+		goodsService.getGoodSByPage(page, offset);
 	}
 	
 	/*
@@ -60,6 +75,16 @@ public class GoodCtrl {
 	}
 	
 	
+	/*
+	 * 获取商品总数
+	 * 
+	 * */
+	
+	@RequestMapping(value="/getTotalGoodSize", method = RequestMethod.POST)
+	public void getTotalGoodSize(GoodUnitBean goodUnitBean)
+	{
+		goodsService.getTotalGoodSize();
+	}
 	
 	
 }

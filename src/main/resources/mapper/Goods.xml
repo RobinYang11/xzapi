@@ -47,6 +47,7 @@
 			#{goodStatus},#{goodBrand},#{goodValidityPeriod},
 			#{goodGrowPlace},#{goodManufacture})
 	</insert>
+	
 	<select id="getGoodsBypage" parameterType="int" resultType="com.xianzhi.bean.ShopBean">
 		SELECT
 			good_id,
@@ -73,6 +74,14 @@
 			</if>
 		</where>
 		LIMIT #{page},#{offset};
+	</select>
+	
+	
+	<select id="getTotalGoodSize"  resultType="int">
+		SELECT
+			count(1)
+		FROM
+			goods		
 	</select>
 </mapper>
     
