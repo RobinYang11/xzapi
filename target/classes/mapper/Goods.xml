@@ -48,7 +48,7 @@
 			#{goodGrowPlace},#{goodManufacture})
 	</insert>
 	
-	<select id="getGoodsBypage" parameterType="int" resultType="com.xianzhi.bean.ShopBean">
+	<select id="getGoodsBypage" parameterType="int" resultType="com.xianzhi.bean.GoodsBean">
 		SELECT
 			good_id,
 			good_type,

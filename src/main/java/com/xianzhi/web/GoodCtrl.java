@@ -3,6 +3,7 @@ package com.xianzhi.web;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -48,9 +49,10 @@ public class GoodCtrl {
 	 * 分页查询商品
 	 * */
 	@RequestMapping(value="/getGoodSByPage", method = RequestMethod.GET)
-	public void addGoodType(Integer page, Integer offset)
+	@ResponseBody
+	public List<GoodsBean> addGoodType(Integer page, Integer offset)
 	{
-		goodsService.getGoodSByPage(page, offset);
+		return goodsService.getGoodSByPage(page, offset);
 	}
 	
 	/*
@@ -80,10 +82,11 @@ public class GoodCtrl {
 	 * 
 	 * */
 	
-	@RequestMapping(value="/getTotalGoodSize", method = RequestMethod.POST)
-	public void getTotalGoodSize(GoodUnitBean goodUnitBean)
+	@RequestMapping(value="/getTotalGoodSize", method = RequestMethod.GET)
+	@ResponseBody
+	public int  getTotalGoodSize(GoodUnitBean goodUnitBean)
 	{
-		goodsService.getTotalGoodSize();
+		return goodsService.getTotalGoodSize();
 	}
 	
 	
