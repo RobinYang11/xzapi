@@ -33,7 +33,7 @@ public class ShopCtrl {
 		return sb;
 	}
 
-	@RequestMapping(value = "/getShopByPage", method = RequestMethod.GET)
+	@RequestMapping(value = "/getTotalShopSize", method = RequestMethod.GET)
 	@ResponseBody
 	public int getTotalShopSize() {
 
