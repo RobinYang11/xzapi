@@ -49,6 +49,7 @@ public class LoginCtrl {
 	@RequestMapping(value = "/logout")
 	public ResponseBean loginOut() 
 	{	
+		
 		return new ResponseBean(200, "Logout success", null);
 	}
 }

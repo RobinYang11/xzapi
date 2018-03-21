@@ -66,13 +66,6 @@
 			good_manufacture
 		FROM
 			goods
-		<where>
-			<if
-				test="goodsCondition.goodShop!=null
-				 and goodsCondition.goodShop.shopId!=null">
-				and shop_id = #{goodsCondition.shop.shopId}
-			</if>
-		</where>
 		LIMIT #{page},#{offset};
 	</select>
 	
