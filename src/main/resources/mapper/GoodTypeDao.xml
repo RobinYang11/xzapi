@@ -22,5 +22,25 @@
 		   good_type
 	</select>
 	
+	<update id="updateType" parameterType="com.xianzhi.bean.GoodTypeBean">
+        UPDATE `good_type`
+        <set>
+            <if test="goodTypeBean.goodsTypeId != null and model.goodsTypeId>0"> goods_type_id = #{goodTypeBeangoodsTypeId}, </if>
+            <if test="goodTypeBean.goodsTypeName != null and model.goodsTypeName!=''"> goods_type_name = #{goodTypeBean.goodsTypeName}, </if>
+        </set>
+        <where>
+            <if test="goodTypeBean.goodsTypeId != null and model.goodsTypeId>0"> AND goods_type_id = #{goodTypeBean.goodsTypeId}</if>
+        </where>
+    </update>
+    
+    <delete id="deleteGoodTypeById">
+    	DELETE FROM 
+			good_type
+		WHERE goods_type_id=#{id}
+    	
+    </delete>
+	
+	
+	
 </mapper>
     

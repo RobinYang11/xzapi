@@ -54,6 +54,31 @@ public interface GoodsService {
 
 	int insertGoodUnit(GoodUnitBean goodUnitBean);
 	
+	/*
+	 * 更新商品分类
+	 */
+
+	int updateGoodType(GoodTypeBean goodTypeBean);
+	
+	/*
+	 * 按ID商品分类
+	 */
+
+	int deleteGoodType( int id);
+	
+	
+	
+	/*
+	 * 更新商品单位
+	 */
+
+	int updateGoodUnit(GoodUnitBean goodUnitBean);
+
+	/*
+	 * 按ID商品单位
+	 */
+
+	int deleteGoodUnit( int id);
 	
 	/*
 	 * 查询所有商品单位

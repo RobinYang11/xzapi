@@ -1,7 +1,5 @@
 package com.xianzhi.web;
 
-
-
 import java.io.IOException;
 import java.util.List;
 
@@ -26,98 +24,107 @@ import com.xianzhi.utils.HttpServletRequestUtil;
 @RestController
 @RequestMapping("/good")
 public class GoodCtrl {
-	
-	
+
 	@Autowired
 	private GoodsService goodsService;
-	
-	
+
 	/*
 	 * 增加商品
-	 * */
-	
-	@RequestMapping(value="/addGood", method = RequestMethod.POST)
-	public void addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException
-	{
-		
+	 */
+
+	@RequestMapping(value = "/addGood", method = RequestMethod.POST)
+	public void addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException {
+
 		System.out.println(goods.getGoodOtherName());
 		goodsService.insertGoods(goods);
 	}
-	
-	
+
 	/*
 	 * 分页查询商品
-	 * */
-	@RequestMapping(value="/getGoodSByPage", method = RequestMethod.GET)
+	 */
+	@RequestMapping(value = "/getGoodSByPage", method = RequestMethod.GET)
 	@ResponseBody
-	public List<GoodsBean> addGoodType(Integer page, Integer offset)
-	{
+	public List<GoodsBean> addGoodType(Integer page, Integer offset) {
 		return goodsService.getGoodSByPage(page, offset);
 	}
-	
+
 	/*
 	 * 增加商品类型
-	 * */
-	
-	@RequestMapping(value="/addGoodType", method = RequestMethod.POST)
-	public void addGoodType(String goodTypeName)
-	{
-		GoodTypeBean goodTypeBean=new GoodTypeBean();
+	 */
+
+	@RequestMapping(value = "/addGoodType", method = RequestMethod.POST)
+	public void addGoodType(String goodTypeName) {
+		GoodTypeBean goodTypeBean = new GoodTypeBean();
 		goodTypeBean.setGoodsTypeName(goodTypeName);
 		goodsService.insertGoodType(goodTypeBean);
 	}
-	
+
 	/*
 	 * 增加商品单位
 	 * 
-	 * */
-	
-	@RequestMapping(value="/addGoodUtil", method = RequestMethod.POST)
-	public void addGoodUtil(String goodUnitName)
-	{
-		
-		GoodUnitBean goodUnitBean=new GoodUnitBean();
+	 */
+
+	@RequestMapping(value = "/addGoodUtil", method = RequestMethod.POST)
+	public void addGoodUtil(String goodUnitName) {
+		GoodUnitBean goodUnitBean = new GoodUnitBean();
 		goodUnitBean.setGoodUnitName(goodUnitName);
 		goodsService.insertGoodUnit(goodUnitBean);
 	}
-	
-	
+
 	/*
 	 * 获取商品总数
 	 * 
-	 * */
-	
-	@RequestMapping(value="/getTotalGoodSize", method = RequestMethod.GET)
+	 */
+
+	@RequestMapping(value = "/getTotalGoodSize", method = RequestMethod.GET)
 	@ResponseBody
-	public int  getTotalGoodSize(GoodUnitBean goodUnitBean)
-	{
+	public int getTotalGoodSize(GoodUnitBean goodUnitBean) {
 		return goodsService.getTotalGoodSize();
 	}
-	
-	
+
 	/*
 	 * 获取总商品分类
 	 * 
-	 * */
-	
-	@RequestMapping(value="/getAllGoodType", method = RequestMethod.GET)
+	 */
+
+	@RequestMapping(value = "/getAllGoodType", method = RequestMethod.GET)
 	@ResponseBody
-	public List<GoodTypeBean>  getAllGoodType()
-	{
+	public List<GoodTypeBean> getAllGoodType() {
 		return goodsService.getAllGoodType();
 	}
-	
+
 	/*
 	 * 获取总商品单位
 	 * 
-	 * */
-	
-	@RequestMapping(value="/getAllGoodUnit", method = RequestMethod.GET)
+	 */
+
+	@RequestMapping(value = "/getAllGoodUnit", method = RequestMethod.GET)
 	@ResponseBody
-	public List<GoodUnitBean>  getAllGoodUnit()
-	{
+	public List<GoodUnitBean> getAllGoodUnit() {
 		return goodsService.getAllGoodUnit();
 	}
+
+	/*
+	 * 更新商品分类
+	 * 
+	 */
+
+	@RequestMapping(value = "/updateGoodType", method = RequestMethod.POST)
+	@ResponseBody
+	public int updateGoodType(String goodTypeName) {
+		GoodTypeBean goodTypeBean = new GoodTypeBean();
+		goodTypeBean.setGoodsTypeName(goodTypeName);
+		return goodsService.updateGoodType(goodTypeBean);
+	}
 	
+	/*
+	 * 按ID商品商品分类
+	 * 
+	 * */
 	
+	@RequestMapping(value = "/deleteGoodTypeById", method = RequestMethod.POST)
+	@ResponseBody
+	public int deleteGoodTypeById(int id) {
+		return goodsService.deleteGoodType(id);
+	}
 }

@@ -74,6 +74,26 @@ public class GoodsServiceImp implements GoodsService {
 		return goodUnitDao.getAllGoodUnit();
 	}
 
+	public int updateGoodType(GoodTypeBean goodTypeBean) {
+		// TODO Auto-generated method stub
+		return goodTypeDao.updateGoodTypeById(goodTypeBean);
+	}
+
+	public int deleteGoodType(int id) {
+		// TODO Auto-generated method stub
+		return goodTypeDao.deleteGoodTypeById(id);
+	}
+
+	public int updateGoodUnit(GoodUnitBean goodUnitBean) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int deleteGoodUnit(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 
 }
