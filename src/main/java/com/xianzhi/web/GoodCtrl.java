@@ -111,9 +111,10 @@ public class GoodCtrl {
 
 	@RequestMapping(value = "/updateGoodType", method = RequestMethod.POST)
 	@ResponseBody
-	public int updateGoodType(String goodTypeName) {
+	public int updateGoodType(int id, String goodTypeName) {
 		GoodTypeBean goodTypeBean = new GoodTypeBean();
 		goodTypeBean.setGoodsTypeName(goodTypeName);
+		goodTypeBean.setGoodsTypeId(id);
 		return goodsService.updateGoodType(goodTypeBean);
 	}
 	
