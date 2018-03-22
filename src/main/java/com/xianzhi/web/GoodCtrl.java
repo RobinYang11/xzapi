@@ -73,8 +73,11 @@ public class GoodCtrl {
 	 * */
 	
 	@RequestMapping(value="/addGoodUtil", method = RequestMethod.POST)
-	public void addGoodUtil(GoodUnitBean goodUnitBean)
+	public void addGoodUtil(String goodUnitName)
 	{
+		
+		GoodUnitBean goodUnitBean=new GoodUnitBean();
+		goodUnitBean.setGoodUnitName(goodUnitName);
 		goodsService.insertGoodUnit(goodUnitBean);
 	}
 	
