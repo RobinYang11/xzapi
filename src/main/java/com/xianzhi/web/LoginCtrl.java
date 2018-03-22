@@ -2,11 +2,14 @@ package com.xianzhi.web;
 
 
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.SessionException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +23,6 @@ import com.xianzhi.utils.JWTUtil;
 @RestController
 @RequestMapping("/user")
 public class LoginCtrl {
-
-	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseBean Login( String username ,String password)
@@ -47,9 +48,15 @@ public class LoginCtrl {
 	}
 
 	@RequestMapping(value = "/logout")
-	public ResponseBean loginOut() 
+	public ResponseBean loginOut(ServletRequest request, ServletResponse response) 
 	{	
+		Subject cSubject =SecurityUtils.getSubject();
 		
+		try {
+			cSubject.logout();
+		} catch (SessionException ise) {
+			ise.printStackTrace();
+		}
 		return new ResponseBean(200, "Logout success", null);
 	}
 }

@@ -39,14 +39,27 @@ public interface GoodsService {
 	/*
 	 * 增加商品分类
 	 */
-
+	
 	int insertGoodType(GoodTypeBean goodTypeBean);
+	
+	/*
+	 * 查询所有分类
+	 */
+	
+	List<GoodTypeBean> getAllGoodType();
 
 	/*
 	 * 增加商品单位
 	 */
 
 	int insertGoodUnit(GoodUnitBean goodUnitBean);
+	
+	
+	/*
+	 * 查询所有商品单位
+	 */
+
+	List<GoodUnitBean> getAllGoodUnit();
 	
 	/*
 	 * 获取商品总数

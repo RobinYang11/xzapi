@@ -36,12 +36,15 @@
         <property name="authenticator" ref="authenticator" />
     </bean>
     <!--JWT filter -->
-    <bean id="JwtFilter" class="com.xianzhi.utils.JwtFilter"></bean>  
+    <bean id="JwtFilter" class="com.xianzhi.utils.JwtFilter"></bean> 
+    
+    <bean id="SysLogoutFilter" class="com.xianzhi.utils.SysLogoutFilter"></bean> 
     <!-- shiro filter -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
     	<property name="filters">    
            <map>    
-               <entry key="JwtFilter" value-ref="JwtFilter"/>  
+               <entry key="JwtFilter" value-ref="JwtFilter"/>
+               <entry key="logout" value-ref="SysLogoutFilter"/>  
            </map>    
        </property> 
         <!-- 安全管理器必须的 -->
@@ -58,7 +61,7 @@
                 /login*=anon
                 <!-- /** = authc 所有url都必须认证通过才可以访问 -->
                 
-          
+          		
                 
                 /b.jsp=JwtFilter[ad_manager]
                 

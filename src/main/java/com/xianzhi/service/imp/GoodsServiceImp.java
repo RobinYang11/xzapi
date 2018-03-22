@@ -64,4 +64,16 @@ public class GoodsServiceImp implements GoodsService {
 		return goodsDao.getTotalGoodSize();
 	}
 
+	public List<GoodTypeBean> getAllGoodType() {
+		// TODO Auto-generated method stub
+		return goodTypeDao.getAllGoodType();
+	}
+
+	public List<GoodUnitBean> getAllGoodUnit() {
+		// TODO Auto-generated method stub
+		return goodUnitDao.getAllGoodUnit();
+	}
+
+	
+
 }
