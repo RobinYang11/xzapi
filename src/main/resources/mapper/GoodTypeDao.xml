@@ -25,7 +25,7 @@
 	<update id="updateGoodTypeById" parameterType="com.xianzhi.bean.GoodTypeBean">
         UPDATE `good_type`
         <set>
-            <if test="goodTypeBean.goodsTypeId != null and model.goodsTypeId>0"> goods_type_id = #{goodTypeBeangoodsTypeId}, </if>
+            <if test="goodTypeBean.goodsTypeId != null and model.goodsTypeId>0"> goods_type_id = #{goodTypeBean.goodsTypeId}, </if>
             <if test="goodTypeBean.goodsTypeName != null and model.goodsTypeName!=''"> goods_type_name = #{goodTypeBean.goodsTypeName}, </if>
         </set>
         <where>
