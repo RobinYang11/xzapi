@@ -90,4 +90,30 @@ public class GoodCtrl {
 	}
 	
 	
+	/*
+	 * 获取总商品分类
+	 * 
+	 * */
+	
+	@RequestMapping(value="/getAllGoodType", method = RequestMethod.GET)
+	@ResponseBody
+	public List<GoodTypeBean>  getAllGoodType()
+	{
+		return goodsService.getAllGoodType();
+	}
+	
+	
+	/*
+	 * 获取总商品单位
+	 * 
+	 * */
+	
+	@RequestMapping(value="/getAllGoodUnit", method = RequestMethod.GET)
+	@ResponseBody
+	public List<GoodUnitBean>  getAllGoodUnit()
+	{
+		return goodsService.getAllGoodUnit();
+	}
+	
+	
 }
