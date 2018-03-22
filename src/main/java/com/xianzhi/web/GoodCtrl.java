@@ -119,7 +119,7 @@ public class GoodCtrl {
 	}
 	
 	/*
-	 * 按ID商品商品分类
+	 * 按ID删除商品分类
 	 * 
 	 * */
 	
