@@ -11,7 +11,7 @@
 		INSERT INTO  good_type
 			(goods_type_id,goods_type_name)
 		VALUES
-			(#{goodsTypeId},#{goodTypeName})
+			(#{goodsTypeId},#{goodsTypeName})
 			
 	</insert>
 	
