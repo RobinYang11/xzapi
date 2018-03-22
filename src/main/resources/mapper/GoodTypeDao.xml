@@ -22,7 +22,7 @@
 		   good_type
 	</select>
 	
-	<update id="updateType" parameterType="com.xianzhi.bean.GoodTypeBean">
+	<update id="updateGoodTypeById" parameterType="com.xianzhi.bean.GoodTypeBean">
         UPDATE `good_type`
         <set>
             <if test="goodTypeBean.goodsTypeId != null and model.goodsTypeId>0"> goods_type_id = #{goodTypeBeangoodsTypeId}, </if>
