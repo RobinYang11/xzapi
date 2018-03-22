@@ -60,8 +60,10 @@ public class GoodCtrl {
 	 * */
 	
 	@RequestMapping(value="/addGoodType", method = RequestMethod.POST)
-	public void addGoodType(GoodTypeBean goodTypeBean)
+	public void addGoodType(String goodTypeName)
 	{
+		GoodTypeBean goodTypeBean=new GoodTypeBean();
+		goodTypeBean.setGoodsTypeName(goodTypeName);
 		goodsService.insertGoodType(goodTypeBean);
 	}
 	
@@ -101,7 +103,6 @@ public class GoodCtrl {
 	{
 		return goodsService.getAllGoodType();
 	}
-	
 	
 	/*
 	 * 获取总商品单位
