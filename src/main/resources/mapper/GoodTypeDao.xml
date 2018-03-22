@@ -6,12 +6,12 @@
 	
 
 	<insert id="insertGoodType" parameterType="com.xianzhi.bean.GoodTypeBean"
-		useGeneratedKeys="true" keyProperty="goodTypeId" keyColumn="goodTypeId">
+		useGeneratedKeys="true" keyProperty="goodsTypeId" keyColumn="goodsTypeId">
 		
 		INSERT INTO  good_type
 			(goods_type_id,goods_type_name)
 		VALUES
-			(#{goodTypeId},#{goodTypeName})
+			(#{goodsTypeId},#{goodTypeName})
 			
 	</insert>
 	
