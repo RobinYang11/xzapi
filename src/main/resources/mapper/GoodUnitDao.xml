@@ -27,7 +27,7 @@
             <if test="goodUnitName != null and goodUnitName!=''"> good_unit_name = #{goodUnitName}, </if>
         </set>
         <where>
-            <if test="goodUnitId != null and model.goodUnitId>0"> AND good_unit_id = #{goodUnitId}</if>
+            <if test="goodUnitId != null and  goodUnitId>0"> AND good_unit_id = #{goodUnitId}</if>
             <if test="goodUnitName != null and goodUnitName!=''"> AND good_unit_name = #{goodUnitName}</if>
         </where>
     </update>
