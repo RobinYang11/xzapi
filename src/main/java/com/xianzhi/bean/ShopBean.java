@@ -1,12 +1,13 @@
 package com.xianzhi.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class ShopBean {
-	
+
 	private Integer shopId;
 	private String shopName;
-	private Integer shopArea;
+	private String shopArea;
 	private Integer shopOwner;
 	private String shopType;
 	private String shopDesc;
@@ -15,6 +16,7 @@ public class ShopBean {
 	private int shopRentTime;
 	private String shopStatus;
 	private String shopStatusDesc;
+	private List<ShopPictureBean> shopPics;
 
 	public Integer getShopId() {
 		return shopId;
@@ -30,14 +32,6 @@ public class ShopBean {
 
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
-	}
-
-	public Integer getShopArea() {
-		return shopArea;
-	}
-
-	public void setShopArea(Integer shopArea) {
-		this.shopArea = shopArea;
 	}
 
 	public Integer getShopOwner() {
@@ -102,6 +96,22 @@ public class ShopBean {
 
 	public void setShopStatusDesc(String shopStatusDesc) {
 		this.shopStatusDesc = shopStatusDesc;
+	}
+
+	public String getShopArea() {
+		return shopArea;
+	}
+
+	public void setShopArea(String shopArea) {
+		this.shopArea = shopArea;
+	}
+
+	public List<ShopPictureBean> getShopPics() {
+		return shopPics;
+	}
+
+	public void setShopPics(List<ShopPictureBean> shopPics) {
+		this.shopPics = shopPics;
 	}
 
 }

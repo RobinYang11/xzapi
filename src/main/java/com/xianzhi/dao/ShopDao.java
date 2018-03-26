@@ -14,5 +14,7 @@ public interface ShopDao {
 	
 	int getTotalShopSize();
 	
+	ShopBean getShopById(int id);
+	
 	
 }

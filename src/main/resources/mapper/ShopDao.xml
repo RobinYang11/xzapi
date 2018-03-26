@@ -15,14 +15,14 @@
 		<result column="shop_rent_time" property="shopRentTime" />
 		<result column="shop_status" property="shopStatus" />
 		<result column="shop_status_desc" property="shopStatusDesc" />
-		
-		<association property="shop_area" column="shopArea"
-			javaType="com.xianzhi.bean.AreaBean">
-			<id column="areaId" property="area_id" />
-			<result column="area_name" property="areaName" />
-			<result column="area_add_time" property="aeraAddTime" />
-			<result column="area_lastedit_time" property="areaLastEditTime" />
-		</association>
+		<result column="shop_area" property="shopArea" />
+		<collection property="shopPics" column="shop_id"
+			ofType="com.xianzhi.bean.ShopPictureBean"     >
+			<id column="shop_pic_id" property="shopPictureId" />
+			<result column="shop_pic_path" property="shopPicturePath" />
+			<result column="shop_pic_name" property="shopPictureName" />
+			<result column="shop_id" property="ShopId" />
+		</collection>
 		<collection property="shopOwner" column="shop_owner"
 			ofType="com.xianzhi.bean.UserInfoBean"     >
 			<id column="user_id" property="userId" />
@@ -43,7 +43,7 @@
 			shop_owner,shop_type,shop_desc,shop_register_time,
 			shop_online_time,shop_rent_time,shop_status,shop_status_desc)
 		VALUES
-			(#{shopName},#{shopArea.area_id},#{shopOwner.user_id},
+			(#{shopName},#{shopArea},#{shopOwner.user_id},
 			#{shopType},#{shopDesc},#{shopRegisterTime},#{shopOnlineTime},
 			#{shopRentTime},#{shopStatus},#{shopStatusDesc}
 		)
@@ -72,6 +72,20 @@
 			count(1)
 		FROM
 			shop			
+	</select>
+	
+	<select id="getShopById" resultMap="shopMap">
+		
+		SELECT
+			*
+		FROM
+			shop AS s
+		LEFT JOIN
+			shop_pic AS sp
+		ON
+			s.shop_id =sp.shop_id
+		WHERE
+			s.shop_id=#{id}
 	</select>
 </mapper>
     

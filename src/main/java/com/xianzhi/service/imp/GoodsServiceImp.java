@@ -41,7 +41,7 @@ public class GoodsServiceImp implements GoodsService {
 
 	public GoodsBean getGoodsById(int goodsId) {
 		// TODO Auto-generated method stub
-		return null;
+		return goodsDao.getGoodsById(goodsId);
 	}
 
 	public List<GoodsBean> getGoodSByPage( int page, int offset) {
@@ -86,7 +86,7 @@ public class GoodsServiceImp implements GoodsService {
 
 	public int updateGoodUnit(GoodUnitBean goodUnitBean) {
 		// TODO Auto-generated method stub
-		return 0;
+		return goodUnitDao.updateGoodUnit(goodUnitBean);
 	}
 
 	public int deleteGoodUnit(int id) {

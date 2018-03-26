@@ -15,12 +15,12 @@
 		<result column="good_validity_period" property="goodValidityPeriod" />
 		<result column="good_grow_place" property="goodGrowPlace" />
 		<result column="good_manufacture" property="goodManufacture" />
-		<association property="good_type" column="goodType"
+		<association property="goodType" column="good_type"
 			javaType="com.xianzhi.bean.GoodTypeBean">
 			<id column="goods_type_id" property="goodTypeId" />
 			<result column="goods_type_name" property="goodTypeName" />
 		</association>
-		<association property="good_shop" column="goodShop"
+		<association property="goodShop" column="good_shop"
 			javaType="com.xianzhi.bean.ShopBean">
 			<id column="shop_id" property="shopId" />
 			<result column="shop_owner" property="shopOwner" />
@@ -76,5 +76,19 @@
 		FROM
 			goods		
 	</select>
+	
+	<select id="getGoodsById" resultMap="goodsMap">
+		SELECT  
+			*
+		FROM 
+		   goods as g
+		LEFT JOIN 
+		   good_pic As gp
+		ON
+		   g.good_id=gp.good_id
+		WHERE
+		   g.good_id =#{id}
+	</select>
+	
 </mapper>
     

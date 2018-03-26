@@ -2,24 +2,18 @@ package com.xianzhi.web;
 
 import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
 import com.xianzhi.service.GoodsService;
-import com.xianzhi.utils.HttpServletRequestUtil;
+
 
 @RestController
 @RequestMapping("/good")
@@ -47,7 +41,16 @@ public class GoodCtrl {
 	public List<GoodsBean> addGoodType(Integer page, Integer offset) {
 		return goodsService.getGoodSByPage(page, offset);
 	}
-
+	
+	/*
+	 * 按id查询商品
+	 */
+	@RequestMapping(value = "/getGoodsById", method = RequestMethod.GET)
+	@ResponseBody
+	public GoodsBean getGoodsById(Integer goodsId) {
+		return goodsService.getGoodsById(goodsId);
+	}
+	
 	/*
 	 * 增加商品类型
 	 */
@@ -128,4 +131,20 @@ public class GoodCtrl {
 	public int deleteGoodTypeById(int id) {
 		return goodsService.deleteGoodType(id);
 	}
+	
+	/*
+	 * 按ID更新商品单位
+	 * 
+	 * */
+	
+	@RequestMapping(value = "/updateGoodUnitById", method = RequestMethod.POST)
+	@ResponseBody
+	public int updateGoodUnitById(int id,String goodUnitName) {
+		GoodUnitBean goodUnitBean =new GoodUnitBean();
+		goodUnitBean.setGoodUnitId(id);
+		goodUnitBean.setGoodUnitName(goodUnitName);
+		return goodsService.updateGoodUnit(goodUnitBean);
+	}
+	
+	
 }

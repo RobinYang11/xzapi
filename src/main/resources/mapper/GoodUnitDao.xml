@@ -20,6 +20,18 @@
 			good_unit
 	</select>
 	
+	<update id="updateGoodUnit" parameterType="com.xianzhi.bean.GoodUnitBean">
+        UPDATE `good_unit`
+        <set>
+            <if test="goodUnitId != null andgoodUnitId>0"> good_unit_id = #{goodUnitId}, </if>
+            <if test="goodUnitName != null andgoodUnitName!=''"> good_unit_name = #{goodUnitName}, </if>
+        </set>
+        <where>
+            <if test="goodUnitId != null and model.goodUnitId>0"> AND good_unit_id = #{goodUnitId}</if>
+            <if test="goodUnitName != null and goodUnitName!=''"> AND good_unit_name = #{goodUnitName}</if>
+        </where>
+    </update>
+	
 	
 </mapper>
     
