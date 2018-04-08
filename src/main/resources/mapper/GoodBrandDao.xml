@@ -6,12 +6,12 @@
 	
 
 	<insert id="addGoodBrand" parameterType="com.xianzhi.bean.GoodBrandBean"
-		useGeneratedKeys="true" keyProperty="goodsTypeId" keyColumn="goodsTypeId">
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		
 		INSERT INTO  good_brand
 			(good_brand_name,good_brand_logo)
 		VALUES
-			(#{good_brand_name},#{good_brand_name})
+			(#{goodBrandName},#{goodBrandLogo})
 			
 	</insert>
 	
