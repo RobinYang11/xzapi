@@ -3,18 +3,15 @@ package com.xianzhi.web;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.xianzhi.bean.GoodBrandBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
@@ -165,10 +162,25 @@ public class GoodCtrl {
 
 		String basePath = PathUtil.getBrandImgPath(4);
 		String imgName = ImageUtil.getRandomFileName();
-		File tempFile = new File(basePath + imgName+".png");
+		String fullName = basePath + imgName + ".png";
+		File tempFile = new File(fullName);
 		file.transferTo(tempFile);
+		GoodBrandBean goodBrandBean = new GoodBrandBean();
+		goodBrandBean.setGoodBrandLogo(fullName);
+		goodBrandBean.setGoodBrandName(goodBrandName);
+		goodsService.addGoodBrand(goodBrandBean);
 		return 0;
+	}
 
+	/*
+	 * 获取所有品牌
+	 * 
+	 */
+
+	@RequestMapping(value = "/getAllGoodBrand", method = RequestMethod.GET)
+	@ResponseBody
+	public List<GoodBrandBean> getAllGoodBrand() {
+		return goodsService.getAllGoodBrand();
 	}
 
 }
