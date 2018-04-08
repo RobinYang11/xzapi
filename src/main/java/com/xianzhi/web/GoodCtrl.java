@@ -180,7 +180,9 @@ public class GoodCtrl {
 	@RequestMapping(value = "/getAllGoodBrand", method = RequestMethod.GET)
 	@ResponseBody
 	public List<GoodBrandBean> getAllGoodBrand() {
+		
 		return goodsService.getAllGoodBrand();
+		
 	}
 
 }
