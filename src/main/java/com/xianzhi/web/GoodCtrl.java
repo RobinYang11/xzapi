@@ -165,7 +165,7 @@ public class GoodCtrl {
 
 		String basePath = PathUtil.getBrandImgPath(4);
 		String imgName = ImageUtil.getRandomFileName();
-		File tempFile = new File(basePath + imgName);
+		File tempFile = new File(basePath + imgName+".png");
 		file.transferTo(tempFile);
 		return 0;
 
