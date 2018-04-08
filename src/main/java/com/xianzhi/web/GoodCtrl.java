@@ -1,19 +1,26 @@
 package com.xianzhi.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
 import com.xianzhi.service.GoodsService;
-
+import com.xianzhi.utils.ImageUtil;
+import com.xianzhi.utils.PathUtil;
 
 @RestController
 @RequestMapping("/good")
@@ -41,7 +48,7 @@ public class GoodCtrl {
 	public List<GoodsBean> addGoodType(Integer page, Integer offset) {
 		return goodsService.getGoodSByPage(page, offset);
 	}
-	
+
 	/*
 	 * 按id查询商品
 	 */
@@ -50,7 +57,7 @@ public class GoodCtrl {
 	public GoodsBean getGoodsById(Integer goodsId) {
 		return goodsService.getGoodsById(goodsId);
 	}
-	
+
 	/*
 	 * 增加商品类型
 	 */
@@ -120,31 +127,48 @@ public class GoodCtrl {
 		goodTypeBean.setGoodsTypeId(id);
 		return goodsService.updateGoodType(goodTypeBean);
 	}
-	
+
 	/*
 	 * 按ID删除商品分类
 	 * 
-	 * */
-	
+	 * 
+	 */
+
 	@RequestMapping(value = "/deleteGoodTypeById", method = RequestMethod.POST)
 	@ResponseBody
 	public int deleteGoodTypeById(int id) {
 		return goodsService.deleteGoodType(id);
 	}
-	
+
 	/*
 	 * 按ID更新商品单位
 	 * 
-	 * */
-	
+	 */
+
 	@RequestMapping(value = "/updateGoodUnitById", method = RequestMethod.POST)
 	@ResponseBody
-	public int updateGoodUnitById(int id,String goodUnitName) {
-		GoodUnitBean goodUnitBean =new GoodUnitBean();
+	public int updateGoodUnitById(int id, String goodUnitName) {
+		GoodUnitBean goodUnitBean = new GoodUnitBean();
 		goodUnitBean.setGoodUnitId(id);
 		goodUnitBean.setGoodUnitName(goodUnitName);
 		return goodsService.updateGoodUnit(goodUnitBean);
 	}
-	
-	
+
+	/*
+	 * 增加商品品牌
+	 * 
+	 */
+
+	@RequestMapping(value = "/addGoodBrand", method = RequestMethod.POST)
+	@ResponseBody
+	public int addGoodBrand(MultipartFile file, String goodBrandName) throws IllegalStateException, IOException {
+
+		String basePath = PathUtil.getBrandImgPath(4);
+		String imgName = ImageUtil.getRandomFileName();
+		File tempFile = new File(basePath + imgName);
+		file.transferTo(tempFile);
+		return 0;
+
+	}
+
 }

@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xianzhi.bean.GoodBrandBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
+import com.xianzhi.dao.GoodBrandDao;
 import com.xianzhi.dao.GoodTypeDao;
 import com.xianzhi.dao.GoodUnitDao;
 import com.xianzhi.dao.GoodsDao;
@@ -22,6 +24,8 @@ public class GoodsServiceImp implements GoodsService {
 	private GoodTypeDao goodTypeDao;
 	@Autowired 
 	private GoodUnitDao goodUnitDao;
+	@Autowired 
+	private GoodBrandDao goodBrandDao;
 	
 
 	public int insertGoods(GoodsBean goodsBean) {
@@ -94,6 +98,18 @@ public class GoodsServiceImp implements GoodsService {
 		return 0;
 	}
 
-	
+	public int addGoodBrand(GoodBrandBean goodBrandBean) {
+		// TODO Auto-generated method stub
+		return goodBrandDao.addGoodBrand(goodBrandBean);
+	}
 
+	public int updateGoodBrand(GoodBrandBean goodBrandBean) {
+		// TODO Auto-generated method stub
+		return goodBrandDao.updateGoodBrand(goodBrandBean);
+	}
+
+	public List<GoodBrandBean> getAllGoodBrand() {
+		// TODO Auto-generated method stub
+		return goodBrandDao.getAllGoodBrand();
+	}
 }

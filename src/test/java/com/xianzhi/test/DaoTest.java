@@ -16,11 +16,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mysql.fabric.xmlrpc.base.Data;
+import com.xianzhi.bean.GoodPictureBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
 import com.xianzhi.bean.RoleBean;
 import com.xianzhi.bean.ShopBean;
+import com.xianzhi.bean.ShopPictureBean;
 import com.xianzhi.bean.UserBean;
 import com.xianzhi.dao.GoodTypeDao;
 import com.xianzhi.dao.GoodUnitDao;
@@ -53,13 +55,36 @@ public class DaoTest {
 	{
 		
 		
-		ShopBean shopBean =new ShopBean();
-		shopBean.setShopName("robinµê");
-		shopBean.setShopOnlineTime(new Date());
-		shopBean.setShopType("×âÓÃ");
+		ShopBean shopBean=new ShopBean();
+		shopBean=sd.getShopById(1);
 		
-		sd.insertShop(shopBean);
+		List<ShopPictureBean> shopPictureBeans=shopBean.getShopPics();
 		
+		for(ShopPictureBean i:shopPictureBeans)
+		{
+			System.out.println(i.getShopPictureName());
+		}
+		
+		
+//		GoodsBean gb=new GoodsBean();
+//		
+//		gb=gd.getGoodsById(1);
+//		
+//		List<GoodPictureBean> gPictureBeans=gb.getGoodPicture();
+//		for(GoodPictureBean iBean :gPictureBeans)
+//		{
+//			System.out.println(iBean.getGoodPicPath());
+//		}
+//		
+//		System.out.println("hello");
+		
+//		ShopBean shopBean =new ShopBean();
+//		shopBean.setShopName("robinµê");
+//		shopBean.setShopOnlineTime(new Date());
+//		shopBean.setShopType("×âÓÃ");
+//		
+//		sd.insertShop(shopBean);
+//		
 		
 		
 //		GoodUnitBean goodUnitBean =new GoodUnitBean();

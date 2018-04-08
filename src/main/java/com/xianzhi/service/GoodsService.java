@@ -2,6 +2,7 @@ package com.xianzhi.service;
 
 import java.util.List;
 
+import com.xianzhi.bean.GoodBrandBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
@@ -91,6 +92,25 @@ public interface GoodsService {
 	 */
 	
 	int getTotalGoodSize();
+	
+	/*
+	 * 增加商品品牌
+	 */
+	
+	int addGoodBrand(GoodBrandBean goodBrandBean);
+	
+	/*
+	 * 更新商品品牌
+	 */
+
+	int updateGoodBrand(GoodBrandBean goodBrandBean);
+	
+	/*
+	 * 获取所有商品品牌
+	 */
+	
+	List<GoodBrandBean> getAllGoodBrand();
+	
 	
 	
 }
