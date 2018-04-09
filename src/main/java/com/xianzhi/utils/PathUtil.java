@@ -5,19 +5,19 @@ import java.io.File;
 public class PathUtil {
 
 	private static String seperator = System.getProperty("file.separator");
+	public static String virtualPath = "/img";
 
 	/**
 	 * @description:生成所有图片统一存储路径
 	 * @param :none
 	 * @author:robin
 	 */
-
 	public static String getBaseImgPath() {
 
 		String basePath = "";
 		String osName = System.getProperty("os.name");
 		if (osName.toLowerCase().startsWith("win")) {
-			basePath = "image";
+			basePath = "D:/xianzhi/image";
 		} else {
 			basePath = "/home/xianzhi/image";
 		}
@@ -29,19 +29,39 @@ public class PathUtil {
 	/**
 	 * @description:生成品牌logo存储路径
 	 * @param :brandId
-	 *            品牌ID
 	 * @author:robin
 	 */
+	public static String getBrandImgPath(String name) {
 
-	public static String getBrandImgPath(int brandId) {
+		String brandPath = "/" + name + "/";
+		return brandPath.replace("/", seperator);
+	}
 
-		String basePath = PathUtil.getBaseImgPath();
-		String brandPath = basePath + "/" + brandId + "/";
-		File dirPath = new File(brandPath);
+	/**
+	 * @description :创建目录
+	 * @param:路径
+	 * @author:robin
+	 */
+	public static void makeDir(String dir) {
+		File dirPath = new File(dir);
+
 		if (!dirPath.exists()) {
 			dirPath.mkdirs();
 		}
-		return brandPath.replace("/", seperator);
+
+	}
+
+	/**
+	 * @description :生成虚拟目录
+	 * @param:server 服务域名或者ip,
+	 * port 端口,imgPath 图片路径 , imgName 图片名称
+	 * @author:robin
+	 */
+	public static String getVirtualPath(String Server, String port, String imgPath, String imgName) {
+
+		String path = "http://" + Server + ":" + port + virtualPath + imgPath + imgName;
+
+		return path.replace("/", seperator);
 	}
 
 	/**
@@ -62,7 +82,6 @@ public class PathUtil {
 	 * @param :goodId
 	 * @author:robin
 	 */
-
 	public static String getGoodImagePath(int goodId) {
 
 		String basePath = getBaseImgPath();

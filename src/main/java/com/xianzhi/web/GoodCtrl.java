@@ -1,8 +1,8 @@
 package com.xianzhi.web;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +25,8 @@ public class GoodCtrl {
 
 	@Autowired
 	private GoodsService goodsService;
-
+	@Autowired
+	private HttpServletRequest request;
 	/*
 	 * 增加商品
 	 */
@@ -159,18 +160,25 @@ public class GoodCtrl {
 	@RequestMapping(value = "/addGoodBrand", method = RequestMethod.POST)
 	@ResponseBody
 	public int addGoodBrand(MultipartFile file, String goodBrandName) throws IllegalStateException, IOException {
-
-		String basePath = PathUtil.getBrandImgPath(4);
-		String imgName = ImageUtil.getRandomFileName();
-		String fullName = basePath + imgName + ".png";
-		File tempFile = new File(fullName);
+		
+		String server=request.getServerName();
+		String port=String.valueOf(request.getServerPort());
+		
+		String RealPath=PathUtil.getBaseImgPath();
+		String imgPath=PathUtil.getBrandImgPath(goodBrandName);
+		PathUtil.makeDir(RealPath+imgPath);
+		String imgName = ImageUtil.getRandomFileName()+".png";
+	    String fullName = RealPath+imgPath + imgName;
+	    System.out.println(fullName);
+	    File tempFile = new File(fullName);
 		file.transferTo(tempFile);
+		
 		GoodBrandBean goodBrandBean = new GoodBrandBean();
-		goodBrandBean.setGoodBrandLogo(fullName);
+		goodBrandBean.setGoodBrandLogo(PathUtil.getVirtualPath(server, port,imgPath, imgName));
 		goodBrandBean.setGoodBrandName(goodBrandName);
-		goodsService.addGoodBrand(goodBrandBean);
-		return 0;
+		return goodsService.addGoodBrand(goodBrandBean);
 	}
+	
 
 	/*
 	 * 获取所有品牌
