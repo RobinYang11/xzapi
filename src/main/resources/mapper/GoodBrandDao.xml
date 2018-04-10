@@ -9,11 +9,25 @@
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		
 		INSERT INTO  good_brand
-			(good_brand_name,good_brand_logo，good_brand_desc)
+			(good_brand_name,good_brand_logo,good_brand_desc)
 		VALUES
 			(#{goodBrandName},#{goodBrandLogo},#{goodBrandDesc})
 			
 	</insert>
+	
+	<update id="updateGoodBrandById" parameterType="com.xianzhi.bean.GoodBrandBean" >
+		update good_brand
+		<set>
+            <if test="id != null and id"> id = #{id}, </if>
+            <if test="goodBrandName != null and goodBrandName != '' "> good_brand_name = #{ goodBrandName}, </if>
+            <if test="goodBrandLogo != null and goodBrandLogo != '' "> good_brand_logo = #{ goodBrandLogo}, </if>
+            <if test="goodBrandDesc != null and goodBrandDesc != '' "> good_brand_desc = #{ goodBrandDesc}, </if>
+        </set>
+        <where>
+            <if test="id != null and id > 0 "> AND id = #{id}</if>
+        </where>
+	</update>
+	
 	
 	<select id="getAllGoodBrand" resultType="com.xianzhi.bean.GoodBrandBean">
 		SELECT 
