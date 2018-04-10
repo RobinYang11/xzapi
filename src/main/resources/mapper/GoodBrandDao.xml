@@ -9,9 +9,9 @@
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		
 		INSERT INTO  good_brand
-			(good_brand_name,good_brand_logo)
+			(good_brand_name,good_brand_logo，good_brand_desc)
 		VALUES
-			(#{goodBrandName},#{goodBrandLogo})
+			(#{goodBrandName},#{goodBrandLogo},#{goodBrandDesc})
 			
 	</insert>
 	

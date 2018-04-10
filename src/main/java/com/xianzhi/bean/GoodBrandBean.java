@@ -5,6 +5,7 @@ public class GoodBrandBean {
 	private int id;
 	private String goodBrandName;
 	private String goodBrandLogo;
+	private String goodBrandDesc;
 
 	public int getId() {
 		return id;
@@ -28,6 +29,14 @@ public class GoodBrandBean {
 
 	public void setGoodBrandLogo(String goodBrandLogo) {
 		this.goodBrandLogo = goodBrandLogo;
+	}
+
+	public String getGoodBrandDesc() {
+		return goodBrandDesc;
+	}
+
+	public void setGoodBrandDesc(String goodBrandDesc) {
+		this.goodBrandDesc = goodBrandDesc;
 	}
 
 }

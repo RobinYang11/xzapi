@@ -159,7 +159,7 @@ public class GoodCtrl {
 
 	@RequestMapping(value = "/addGoodBrand", method = RequestMethod.POST)
 	@ResponseBody
-	public int addGoodBrand(MultipartFile file, String goodBrandName) throws IllegalStateException, IOException {
+	public int addGoodBrand(MultipartFile file, String goodBrandName,String goodBrandDesc) throws IllegalStateException, IOException {
 		
 		String server=request.getServerName();
 		String port=String.valueOf(request.getServerPort());
@@ -176,6 +176,7 @@ public class GoodCtrl {
 		GoodBrandBean goodBrandBean = new GoodBrandBean();
 		goodBrandBean.setGoodBrandLogo(PathUtil.getVirtualPath(server, port,imgPath, imgName));
 		goodBrandBean.setGoodBrandName(goodBrandName);
+		goodBrandBean.setGoodBrandDesc(goodBrandDesc);
 		return goodsService.addGoodBrand(goodBrandBean);
 	}
 	
