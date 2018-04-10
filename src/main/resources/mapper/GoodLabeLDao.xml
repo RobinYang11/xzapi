@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.GoodLabelDao">
+	
+
+	<insert id="addGoodLabel" parameterType="com.xianzhi.bean.GoodLabelBean"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		
+		INSERT INTO  good_label
+			(good_label_name,priority)
+		VALUES
+			(#{goodLabelName},#{priority})
+			
+	</insert>
+	
+	
+	<select id="getAllGoodLabel" resultType="com.xianzhi.bean.GoodLabelBean">
+		SELECT 
+			*
+		FROM 
+		   good_label
+	</select>
+	
+	<update id="updateGoodLabel" parameterType="com.xianzhi.bean.GoodLabelBean">
+        UPDATE `good_label`
+        <set>
+            <if test="id != null and id >0"> goods_type_id = #{id}, </if>
+            <if test="goodsLabelName != null and goodsLabelName !=''"> goods_type_name = #{ goodsLabelName}, </if>
+        </set>
+        <where>
+            <if test="id != null and id >0"> AND id = #{id}</if>
+        </where>
+    </update>
+    
+    <delete id="deleteGoodLabelById">
+    	DELETE FROM 
+			good_label
+		WHERE id=#{id}
+    </delete>
+    
+</mapper>
+    

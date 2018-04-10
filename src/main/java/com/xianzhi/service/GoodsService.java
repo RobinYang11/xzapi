@@ -3,6 +3,7 @@ package com.xianzhi.service;
 import java.util.List;
 
 import com.xianzhi.bean.GoodBrandBean;
+import com.xianzhi.bean.GoodLabelBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
@@ -110,6 +111,30 @@ public interface GoodsService {
 	 */
 	
 	List<GoodBrandBean> getAllGoodBrand();
+	
+	/*
+	 * 增加商品标签
+	 */
+	
+	int addGoodLabel(GoodLabelBean goodLabelBean);
+	
+	/*
+	 * 更新商品标签
+	 */
+	
+	int updateGoodLabel(GoodLabelBean goodLabelBean);
+	
+	/*
+	 * 删除商品标签
+	 */
+	
+	void deleteGoodLabel(int id);
+	
+	/*
+	 * 获取商品标签
+	 */
+	
+	List<GoodLabelBean> getAllGoodLabel();
 	
 	
 	

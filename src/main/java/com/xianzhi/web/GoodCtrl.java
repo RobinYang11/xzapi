@@ -1,4 +1,5 @@
 package com.xianzhi.web;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.xianzhi.bean.GoodBrandBean;
+import com.xianzhi.bean.GoodLabelBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
@@ -159,27 +161,27 @@ public class GoodCtrl {
 
 	@RequestMapping(value = "/addGoodBrand", method = RequestMethod.POST)
 	@ResponseBody
-	public int addGoodBrand(MultipartFile file, String goodBrandName,String goodBrandDesc) throws IllegalStateException, IOException {
-		
-		String server=request.getServerName();
-		String port=String.valueOf(request.getServerPort());
-		
-		String RealPath=PathUtil.getBaseImgPath();
-		String imgPath=PathUtil.getBrandImgPath(goodBrandName);
-		PathUtil.makeDir(RealPath+imgPath);
-		String imgName = ImageUtil.getRandomFileName()+".png";
-	    String fullName = RealPath+imgPath + imgName;
-	    System.out.println(fullName);
-	    File tempFile = new File(fullName);
+	public int addGoodBrand(MultipartFile file, String goodBrandName, String goodBrandDesc)
+			throws IllegalStateException, IOException {
+
+		String server = request.getServerName();
+		String port = String.valueOf(request.getServerPort());
+
+		String RealPath = PathUtil.getBaseImgPath();
+		String imgPath = PathUtil.getBrandImgPath(goodBrandName);
+		PathUtil.makeDir(RealPath + imgPath);
+		String imgName = ImageUtil.getRandomFileName() + ".png";
+		String fullName = RealPath + imgPath + imgName;
+		System.out.println(fullName);
+		File tempFile = new File(fullName);
 		file.transferTo(tempFile);
-		
+
 		GoodBrandBean goodBrandBean = new GoodBrandBean();
-		goodBrandBean.setGoodBrandLogo(PathUtil.getVirtualPath(server, port,imgPath, imgName));
+		goodBrandBean.setGoodBrandLogo(PathUtil.getVirtualPath(server, port, imgPath, imgName));
 		goodBrandBean.setGoodBrandName(goodBrandName);
 		goodBrandBean.setGoodBrandDesc(goodBrandDesc);
 		return goodsService.addGoodBrand(goodBrandBean);
 	}
-	
 
 	/*
 	 * 获取所有品牌
@@ -189,9 +191,68 @@ public class GoodCtrl {
 	@RequestMapping(value = "/getAllGoodBrand", method = RequestMethod.GET)
 	@ResponseBody
 	public List<GoodBrandBean> getAllGoodBrand() {
-		
+
 		return goodsService.getAllGoodBrand();
-		
+
 	}
+
+	/*
+	 * 获取所有商品标签
+	 * 
+	 */
+
+	@RequestMapping(value = "/getAllGoodLabel", method = RequestMethod.GET)
+	@ResponseBody
+	public List<GoodLabelBean> getAllGoodLabel() {
+
+		return goodsService.getAllGoodLabel();
+
+	}
+
+	/*
+	 * 添加商品标签
+	 * 
+	 */
+
+	@RequestMapping(value = "/addGoodLabel", method = RequestMethod.POST)
+	@ResponseBody
+	public int addGoodLabel(String goodLabelName, int priority) {
+
+		GoodLabelBean goodLabelBean = new GoodLabelBean();
+		goodLabelBean.setGoodLabelName(goodLabelName);
+		goodLabelBean.setPriority(priority);
+		return goodsService.addGoodLabel(goodLabelBean);
+
+	}
+	
+	/*
+	 * 更新商品标签
+	 * 
+	 */
+	
+	@RequestMapping(value = "/updateGoodLabel", method = RequestMethod.POST)
+	@ResponseBody
+	public int updateGoodLabel(String goodLabelName, int priority) {
+
+		GoodLabelBean goodLabelBean = new GoodLabelBean();
+		goodLabelBean.setGoodLabelName(goodLabelName);
+		goodLabelBean.setPriority(priority);
+		return goodsService.updateGoodLabel(goodLabelBean);
+	}
+
+	
+	/*
+	 * 删除商品标签
+	 * 
+	 */
+	@RequestMapping(value = "/deleteGoodLabel", method = RequestMethod.GET)
+	@ResponseBody
+	public void deleteGoodLabel(int id) {
+
+		goodsService.deleteGoodLabel(id);
+	}
+	
+	
+	
 
 }

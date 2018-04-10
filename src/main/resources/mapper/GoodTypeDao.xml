@@ -37,10 +37,7 @@
     	DELETE FROM 
 			good_type
 		WHERE goods_type_id=#{id}
-    	
     </delete>
-	
-	
-	
+    
 </mapper>
     
