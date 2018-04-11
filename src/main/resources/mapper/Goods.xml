@@ -46,7 +46,7 @@
 		INSERT INTO
 			goods(good_type,good_shop,
 			good_name,good_other_name,good_unit,good_price,
-			good_discount,good_status,good_brand,good_validity_period,good_grow_place,good_manufactur,
+			good_discount,good_status,good_brand,good_validity_period,good_grow_place,good_manufacture,
 			good_material,good_sort_method,good_number,good_security_auth,good_sort_num)
 		VALUES
 			(#{goodType},#{goodShop},#{goodName},
