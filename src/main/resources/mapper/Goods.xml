@@ -15,6 +15,12 @@
 		<result column="good_validity_period" property="goodValidityPeriod" />
 		<result column="good_grow_place" property="goodGrowPlace" />
 		<result column="good_manufacture" property="goodManufacture" />
+		<result column="good_bak" property="goodBak" />
+		<result column="good_material" property="goodMaterial" />
+		<result column="good_sort_method" property="goodSortMethod" />
+		<result column="good_number" property="goodNumber" />
+		<result column="good_security_auth" property="goodSecurityAuth" />
+		<result column="good_sort_num" property="goodSortNum" />
 		<association property="goodType" column="good_type"
 			javaType="com.xianzhi.bean.GoodTypeBean">
 			<id column="goods_type_id" property="goodTypeId" />
@@ -40,12 +46,13 @@
 		INSERT INTO
 			goods(good_type,good_shop,
 			good_name,good_other_name,good_unit,good_price,
-			good_discount,good_status,good_brand,good_validity_period,good_grow_place,good_manufacture)
+			good_discount,good_status,good_brand,good_validity_period,good_grow_place,good_manufactur,
+			good_material,good_sort_method,good_number,good_security_auth,good_sort_num)
 		VALUES
 			(#{goodType.goodTypeId},#{goodShop.shopId},#{goodName},
 			#{goodOtherName},#{goodUnit.goodUnitId},#{goodPrice},#{goodDiscount},
 			#{goodStatus},#{goodBrand},#{goodValidityPeriod},
-			#{goodGrowPlace},#{goodManufacture})
+			#{goodGrowPlace},#{goodManufacture},#{goodMaterial},#{goodSortMethod},#{goodNumber},#{goodSecurityAuth},#{goodSortNum})
 	</insert>
 	
 	<select id="getGoodsBypage" parameterType="int" resultType="com.xianzhi.bean.GoodsBean">
