@@ -49,8 +49,8 @@
 			good_discount,good_status,good_brand,good_validity_period,good_grow_place,good_manufactur,
 			good_material,good_sort_method,good_number,good_security_auth,good_sort_num)
 		VALUES
-			(#{goodType.goodTypeId},#{goodShop.shopId},#{goodName},
-			#{goodOtherName},#{goodUnit.goodUnitId},#{goodPrice},#{goodDiscount},
+			(#{goodType},#{goodShop},#{goodName},
+			#{goodOtherName},#{goodUnit},#{goodPrice},#{goodDiscount},
 			#{goodStatus},#{goodBrand},#{goodValidityPeriod},
 			#{goodGrowPlace},#{goodManufacture},#{goodMaterial},#{goodSortMethod},#{goodNumber},#{goodSecurityAuth},#{goodSortNum})
 	</insert>
