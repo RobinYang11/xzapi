@@ -31,43 +31,40 @@ public class GoodCtrl {
 	private GoodsService goodsService;
 	@Autowired
 	private HttpServletRequest request;
-	
+
 	/*
 	 * 增加商品
 	 */
 
 	@RequestMapping(value = "/addGood", method = RequestMethod.POST)
 	public void addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException {
-		System.out.println("heel");
-		
-//		goodsService.insertGoods(goods);
+		 goodsService.insertGoods(goods);
 	}
-	
+
 	/*
 	 * 增加商品图片
 	 */
 	@RequestMapping(value = "/addGoodPic", method = RequestMethod.POST)
-	public void addGoodImg(int goodId,MultipartFile file) {
-		
+	public void addGoodImg(int goodId, MultipartFile file) {
+
 	}
-	
+
 	/*
 	 * 更新商品图片
 	 */
 	@RequestMapping(value = "/updateGoodImg", method = RequestMethod.POST)
-	public void updateGoodImg(int picId,MultipartFile file) {
-		
+	public void updateGoodImg(int picId, MultipartFile file) {
+
 	}
-	
+
 	/*
 	 * 删除商品图片
 	 */
 	@RequestMapping(value = "/deleteGoodImg", method = RequestMethod.POST)
-	public void deleteGoodImg(int picId,MultipartFile file) {
-		
+	public void deleteGoodImg(int picId, MultipartFile file) {
+
 	}
-	
-	
+
 	/*
 	 * 分页查询商品
 	 */
@@ -252,15 +249,15 @@ public class GoodCtrl {
 		return goodsService.addGoodLabel(goodLabelBean);
 
 	}
-	
+
 	/*
 	 * 更新商品标签
 	 * 
 	 */
-	
+
 	@RequestMapping(value = "/updateGoodLabel", method = RequestMethod.POST)
 	@ResponseBody
-	public int updateGoodLabel(Integer id,String goodLabelName, int priority) {
+	public int updateGoodLabel(Integer id, String goodLabelName, int priority) {
 
 		GoodLabelBean goodLabelBean = new GoodLabelBean();
 		goodLabelBean.setId(id);
@@ -269,7 +266,6 @@ public class GoodCtrl {
 		return goodsService.updateGoodLabel(goodLabelBean);
 	}
 
-	
 	/*
 	 * 删除商品标签
 	 * 
@@ -280,8 +276,5 @@ public class GoodCtrl {
 
 		goodsService.deleteGoodLabel(id);
 	}
-	
-	
-	
 
 }
