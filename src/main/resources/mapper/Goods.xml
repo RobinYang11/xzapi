@@ -23,8 +23,8 @@
 		<result column="good_sort_num" property="goodSortNum" />
 		<association property="goodType" column="good_type"
 			javaType="com.xianzhi.bean.GoodTypeBean">
-			<id column="goods_type_id"  property="goodTypeId" />
-			<result column="goods_type_name" property="goodTypeName" />
+			<id column="goods_type_id"  property="goodsTypeId" />
+			<result column="goods_type_name" property="goodsTypeName" />
 		</association>
 		<association property="goodShop" column="good_shop"
 			javaType="com.xianzhi.bean.ShopBean">
