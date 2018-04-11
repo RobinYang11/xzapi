@@ -27,6 +27,8 @@
         UPDATE `good_label`
         <set>
             <if test="goodLabelName != null and goodLabelName !=''"> good_label_name = #{ goodLabelName}, </if>
+            <if test="priority != null and priority !=''"> priority = #{ priority} </if>
+            
         </set>
         <where>
              <if test="id != null and id >0"> AND id = #{id}</if>
