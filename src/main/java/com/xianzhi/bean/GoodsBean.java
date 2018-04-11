@@ -23,7 +23,8 @@ public class GoodsBean {
 	private String goodSortMethod;
 	private String goodNumber;
 	private String goodSecurityAuth;
-	private String goodNum;
+	private String goodSortNum;
+	
 
 
 	public String getGoodBak() {
@@ -66,13 +67,6 @@ public class GoodsBean {
 		this.goodSecurityAuth = goodSecurityAuth;
 	}
 
-	public String getGoodNum() {
-		return goodNum;
-	}
-
-	public void setGoodNum(String goodNum) {
-		this.goodNum = goodNum;
-	}
 
 	public int getGoodId() {
 		return goodId;
@@ -185,6 +179,14 @@ public class GoodsBean {
 
 	public void setGoodValidityPeriod(String goodValidityPeriod) {
 		this.goodValidityPeriod = goodValidityPeriod;
+	}
+
+	public String getGoodSortNum() {
+		return goodSortNum;
+	}
+
+	public void setGoodSortNum(String goodSortNum) {
+		this.goodSortNum = goodSortNum;
 	}
 
 
