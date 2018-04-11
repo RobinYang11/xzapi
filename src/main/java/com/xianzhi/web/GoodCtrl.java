@@ -31,16 +31,43 @@ public class GoodCtrl {
 	private GoodsService goodsService;
 	@Autowired
 	private HttpServletRequest request;
+	
 	/*
 	 * 增加商品
 	 */
 
 	@RequestMapping(value = "/addGood", method = RequestMethod.POST)
-	public void addGood(int id, @RequestParam(value="files") MultipartFile  []  files) throws JsonParseException, JsonMappingException, IOException {
+	public void addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException {
 		System.out.println("heel");
+		
 //		goodsService.insertGoods(goods);
 	}
-
+	
+	/*
+	 * 增加商品图片
+	 */
+	@RequestMapping(value = "/addGoodPic", method = RequestMethod.POST)
+	public void addGoodImg(int goodId,MultipartFile file) {
+		
+	}
+	
+	/*
+	 * 更新商品图片
+	 */
+	@RequestMapping(value = "/updateGoodImg", method = RequestMethod.POST)
+	public void updateGoodImg(int picId,MultipartFile file) {
+		
+	}
+	
+	/*
+	 * 删除商品图片
+	 */
+	@RequestMapping(value = "/deleteGoodImg", method = RequestMethod.POST)
+	public void deleteGoodImg(int picId,MultipartFile file) {
+		
+	}
+	
+	
 	/*
 	 * 分页查询商品
 	 */
