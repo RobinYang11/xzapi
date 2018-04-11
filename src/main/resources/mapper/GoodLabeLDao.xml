@@ -26,7 +26,6 @@
 	<update id="updateGoodLabel" parameterType="com.xianzhi.bean.GoodLabelBean">
         UPDATE `good_label`
         <set>
-            <if test="id != null and id >0"> id = #{id}, </if>
             <if test="goodLabelName != null and goodLabelName !=''"> good_label_name = #{ goodLabelName}, </if>
         </set>
         <where>
