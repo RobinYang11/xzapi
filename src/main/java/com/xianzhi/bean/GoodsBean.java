@@ -1,25 +1,78 @@
 package com.xianzhi.bean;
 
-import java.util.Date;
-import java.util.List;
+
 
 public class GoodsBean {
 
 	private int goodId;
-	private GoodTypeBean goodType;
-	private ShopBean goodShop;
+	private int goodType;
+	private int goodShop;
+	private int goodUnit;
 	private String goodName;
 	private String goodOtherName;
-	private GoodUnitBean goodUnit;
 	private Double goodPrice;
 	private Double goodDiscount;
 	private String goodStatus;
 	private String goodBrand;
 	private String goodRemark;
-	private Date goodValidityPeriod;
+	private String goodValidityPeriod;
 	private String goodGrowPlace;
 	private String goodManufacture;
-	private List<GoodPictureBean> goodPicture;
+	private String goodBak;
+	private String goodMaterial;
+	private String goodSortMethod;
+	private String goodNumber;
+	private String goodSecurityAuth;
+	private String goodNum;
+
+
+	public String getGoodBak() {
+		return goodBak;
+	}
+
+	public void setGoodBak(String goodBak) {
+		this.goodBak = goodBak;
+	}
+
+	public String getGoodMaterial() {
+		return goodMaterial;
+	}
+
+	public void setGoodMaterial(String goodMaterial) {
+		this.goodMaterial = goodMaterial;
+	}
+
+	public String getGoodSortMethod() {
+		return goodSortMethod;
+	}
+
+	public void setGoodSortMethod(String goodSortMethod) {
+		this.goodSortMethod = goodSortMethod;
+	}
+
+	public String getGoodNumber() {
+		return goodNumber;
+	}
+
+	public void setGoodNumber(String goodNumber) {
+		this.goodNumber = goodNumber;
+	}
+
+	public String getGoodSecurityAuth() {
+		return goodSecurityAuth;
+	}
+
+	public void setGoodSecurityAuth(String goodSecurityAuth) {
+		this.goodSecurityAuth = goodSecurityAuth;
+	}
+
+	public String getGoodNum() {
+		return goodNum;
+	}
+
+	public void setGoodNum(String goodNum) {
+		this.goodNum = goodNum;
+	}
 
 	public int getGoodId() {
 		return goodId;
@@ -29,19 +82,19 @@ public class GoodsBean {
 		this.goodId = goodId;
 	}
 
-	public GoodTypeBean getGoodType() {
+	public int getGoodType() {
 		return goodType;
 	}
 
-	public void setGoodType(GoodTypeBean goodType) {
+	public void setGoodType(int goodType) {
 		this.goodType = goodType;
 	}
 
-	public ShopBean getGoodShop() {
+	public int getGoodShop() {
 		return goodShop;
 	}
 
-	public void setGoodShop(ShopBean goodShop) {
+	public void setGoodShop(int goodShop) {
 		this.goodShop = goodShop;
 	}
 
@@ -61,11 +114,11 @@ public class GoodsBean {
 		this.goodOtherName = goodOtherName;
 	}
 
-	public GoodUnitBean getGoodUnit() {
+	public int getGoodUnit() {
 		return goodUnit;
 	}
 
-	public void setGoodUnit(GoodUnitBean goodUnit) {
+	public void setGoodUnit(int goodUnit) {
 		this.goodUnit = goodUnit;
 	}
 
@@ -109,13 +162,6 @@ public class GoodsBean {
 		this.goodRemark = goodRemark;
 	}
 
-	public Date getGoodValidityPeriod() {
-		return goodValidityPeriod;
-	}
-
-	public void setGoodValidityPeriod(Date goodValidityPeriod) {
-		this.goodValidityPeriod = goodValidityPeriod;
-	}
 
 	public String getGoodGrowPlace() {
 		return goodGrowPlace;
@@ -133,12 +179,13 @@ public class GoodsBean {
 		this.goodManufacture = goodManufacture;
 	}
 
-	public List<GoodPictureBean> getGoodPicture() {
-		return goodPicture;
+	public String getGoodValidityPeriod() {
+		return goodValidityPeriod;
 	}
 
-	public void setGoodPicture(List<GoodPictureBean> goodPicture) {
-		this.goodPicture = goodPicture;
+	public void setGoodValidityPeriod(String goodValidityPeriod) {
+		this.goodValidityPeriod = goodValidityPeriod;
 	}
+
 
 }
