@@ -2,11 +2,13 @@ package com.xianzhi.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,10 +36,9 @@ public class GoodCtrl {
 	 */
 
 	@RequestMapping(value = "/addGood", method = RequestMethod.POST)
-	public void addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException {
-
-		System.out.println(goods.getGoodOtherName());
-		goodsService.insertGoods(goods);
+	public void addGood(int id, @RequestParam(value="files") MultipartFile  []  files) throws JsonParseException, JsonMappingException, IOException {
+		System.out.println("heel");
+//		goodsService.insertGoods(goods);
 	}
 
 	/*
@@ -168,7 +169,7 @@ public class GoodCtrl {
 		String port = String.valueOf(request.getServerPort());
 
 		String RealPath = PathUtil.getBaseImgPath();
-		String imgPath = PathUtil.getBrandImgPath(goodBrandName);
+		String imgPath = PathUtil.getBrandImgPath(goodBrandName.trim());
 		PathUtil.makeDir(RealPath + imgPath);
 		String imgName = ImageUtil.getRandomFileName() + ".png";
 		String fullName = RealPath + imgPath + imgName;
@@ -232,9 +233,10 @@ public class GoodCtrl {
 	
 	@RequestMapping(value = "/updateGoodLabel", method = RequestMethod.POST)
 	@ResponseBody
-	public int updateGoodLabel(String goodLabelName, int priority) {
+	public int updateGoodLabel(Integer id,String goodLabelName, int priority) {
 
 		GoodLabelBean goodLabelBean = new GoodLabelBean();
+		goodLabelBean.setId(id);
 		goodLabelBean.setGoodLabelName(goodLabelName);
 		goodLabelBean.setPriority(priority);
 		return goodsService.updateGoodLabel(goodLabelBean);
