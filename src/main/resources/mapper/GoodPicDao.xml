@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianzhi.dao.GoodPicDao">
+	<insert id="addGoodPic" parameterType="com.xianzhi.bean.GoodPictureBean"
+		useGeneratedKeys="true" keyProperty="goodPicId" keyColumn="goodPicId">
+		INSERT INTO
+			good_pic(good_pic_path,good_id)
+		VALUES
+			(#{goodPicPath},#{goodId});
+			
+	</insert>
+	<select id="getGoodSizeByGoodId"  resultType="com.xianzhi.bean.GoodPictureBean">
+		SELECT
+			*
+		FROM
+			good_pic
+		<where>
+			<if test="goodId !=null and goodId>0">good_id=#{goodId}</if>
+		</where>
+			
+	</select>
+	<update id="updateGoodPic" parameterType="com.xianzhi.bean.GoodPictureBean">
+        UPDATE `good_pic`
+        <set>
+            <if test="goodPicPath  != null and goodPicPath !=''"> good_pic_path = #{goodPicPath}, </if>
+            <if test="goodId != null and  goodId"> good_id= #{goodId},</if>
+        </set>
+        <where>
+            <if test="goodPicId != null and  goodPicId>0"> good_pic_id = #{goodPicId}</if>
+        </where>
+    </update>
+    
+     <delete id="deleteGoodPicById">
+    	DELETE FROM 
+			good_pic
+		WHERE id=#{id}
+    </delete>
+    
+	
+</mapper>
+    

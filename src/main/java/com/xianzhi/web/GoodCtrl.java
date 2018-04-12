@@ -2,13 +2,11 @@ package com.xianzhi.web;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +14,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.xianzhi.bean.GoodBrandBean;
 import com.xianzhi.bean.GoodLabelBean;
+import com.xianzhi.bean.GoodPictureBean;
+import com.xianzhi.bean.GoodSizeBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
@@ -33,36 +33,81 @@ public class GoodCtrl {
 	private HttpServletRequest request;
 
 	/*
-	 * 增加商品
+	 * 增加商品规格
 	 */
 
 	@RequestMapping(value = "/addGood", method = RequestMethod.POST)
 	public int addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException {
 		  return goodsService.insertGoods(goods);
 	}
-
+	
+	
+	/*
+	 * 增加商品规格
+	 */
+	@RequestMapping(value = "/addGoodSize", method = RequestMethod.POST)
+	public int  addGoodSize(GoodSizeBean goodSizeBean) {
+		return goodsService.addGoodSize(goodSizeBean);
+	}
+	
+	/*
+	 * 修改商品规格
+	 */
+	@RequestMapping(value = "/updateGoodSize", method = RequestMethod.POST)
+	public int  updateGoodSize(GoodSizeBean goodSizeBean) {
+		return goodsService.updateGoodSize(goodSizeBean);
+	}
+	
+	
+	/*
+	 * 删除商品规格
+	 */
+	@RequestMapping(value = "/deleteGoodSize", method = RequestMethod.POST)
+	public int  deleteGoodSize(int id) {
+		return goodsService.deleteGoodSizeById(id);
+	}
+	
+	
+	/*
+	 * 删除商品规格
+	 */
+	@RequestMapping(value = "/getGoodSizeByGoodId", method = RequestMethod.POST)
+	public List<GoodSizeBean> getGoodSizeByGoodId(int goodId) {
+		return goodsService.getGoodSizeByGoodId(goodId);
+	}
+	
 	/*
 	 * 增加商品图片
 	 */
 	@RequestMapping(value = "/addGoodPic", method = RequestMethod.POST)
-	public void addGoodImg(int goodId, MultipartFile file) {
-
+	public int  addGoodImg(int goodId, MultipartFile file) {
+		GoodPictureBean goodPictureBean =new GoodPictureBean();
+		 return goodsService.addGoodPic(goodPictureBean);
 	}
-
+	
+	/*
+	 * 增加商品图片
+	 */
+	@RequestMapping(value = "/addGoodPic", method = RequestMethod.POST)
+	public List<GoodPictureBean>  getGoodImgByGoodId(int goodId) {
+		 return goodsService.getGoodPicByGoodId(goodId);
+	}
+	
 	/*
 	 * 更新商品图片
 	 */
 	@RequestMapping(value = "/updateGoodImg", method = RequestMethod.POST)
-	public void updateGoodImg(int picId, MultipartFile file) {
-
+	public int updateGoodImg(int picId, MultipartFile file) {
+		GoodPictureBean goodPictureBean =new GoodPictureBean();
+		return goodsService.updateGoodPic(goodPictureBean);
 	}
 
 	/*
 	 * 删除商品图片
 	 */
 	@RequestMapping(value = "/deleteGoodImg", method = RequestMethod.POST)
-	public void deleteGoodImg(int picId, MultipartFile file) {
-
+	public int  deleteGoodImg(int picId) {
+		return goodsService.deleteGoodPicById(picId);
 	}
 
 	/*

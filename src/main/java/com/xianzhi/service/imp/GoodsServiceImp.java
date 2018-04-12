@@ -7,11 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.xianzhi.bean.GoodBrandBean;
 import com.xianzhi.bean.GoodLabelBean;
+import com.xianzhi.bean.GoodPictureBean;
+import com.xianzhi.bean.GoodSizeBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
 import com.xianzhi.dao.GoodBrandDao;
 import com.xianzhi.dao.GoodLabelDao;
+import com.xianzhi.dao.GoodPicDao;
+import com.xianzhi.dao.GoodSizeDao;
 import com.xianzhi.dao.GoodTypeDao;
 import com.xianzhi.dao.GoodUnitDao;
 import com.xianzhi.dao.GoodsDao;
@@ -30,6 +34,10 @@ public class GoodsServiceImp implements GoodsService {
 	private GoodBrandDao goodBrandDao;
 	@Autowired
 	private GoodLabelDao goodLabelDao;
+	@Autowired
+	private GoodSizeDao goodSizeDao;
+	@Autowired
+	private GoodPicDao goodPicDao;
 
 	public int insertGoods(GoodsBean goodsBean) {
 		// TODO Auto-generated method stub
@@ -135,5 +143,45 @@ public class GoodsServiceImp implements GoodsService {
 	public List<GoodLabelBean> getAllGoodLabel() {
 		// TODO Auto-generated method stub
 		return goodLabelDao.getAllGoodLabel();
+	}
+
+	public int addGoodSize(GoodSizeBean goodSizeBean) {
+		// TODO Auto-generated method stub
+		return  goodSizeDao.addGoodSize(goodSizeBean);
+	}
+
+	public int updateGoodSize(GoodSizeBean goodSizeBean) {
+		// TODO Auto-generated method stub
+		return goodSizeDao.updateGoodSize(goodSizeBean);
+	}
+
+	public List<GoodSizeBean> getGoodSizeByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		return goodSizeDao.getGoodSizeByGoodId(goodId);
+	}
+
+	public int deleteGoodSizeById(int id) {
+		// TODO Auto-generated method stub
+		return goodSizeDao.deletGoodSize(id);
+	}
+
+	public int addGoodPic(GoodPictureBean goodPictureBean) {
+		// TODO Auto-generated method stub
+		return goodPicDao.addGoodPic(goodPictureBean);
+	}
+
+	public int updateGoodPic(GoodPictureBean goodPictureBean) {
+		// TODO Auto-generated method stub
+		return goodPicDao.updateGoodPic(goodPictureBean);
+	}
+
+	public List<GoodPictureBean> getGoodPicByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		return goodPicDao.getGoodPicByGoodId(goodId);
+	}
+
+	public int deleteGoodPicById(int id) {
+		// TODO Auto-generated method stub
+		return goodPicDao.deleteGoodPicById(id);
 	}
 }

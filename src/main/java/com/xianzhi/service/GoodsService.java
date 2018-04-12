@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.xianzhi.bean.GoodBrandBean;
 import com.xianzhi.bean.GoodLabelBean;
+import com.xianzhi.bean.GoodPictureBean;
+import com.xianzhi.bean.GoodSizeBean;
 import com.xianzhi.bean.GoodTypeBean;
 import com.xianzhi.bean.GoodUnitBean;
 import com.xianzhi.bean.GoodsBean;
@@ -135,6 +137,60 @@ public interface GoodsService {
 	 */
 	
 	List<GoodLabelBean> getAllGoodLabel();
+	
+	
+	/*
+	 * 增加商品规格
+	 * */
+	
+	int addGoodSize(GoodSizeBean goodSizeBean);
+	
+	/*
+	 * 更新商品规格
+	 * */
+	
+	int updateGoodSize(GoodSizeBean goodSizeBean);
+	
+	
+	/*
+	 * 按商品查询商品规格
+	 * */
+	
+	List<GoodSizeBean> getGoodSizeByGoodId(int goodId);
+	
+	/*
+	 * 删除商品规格
+	 * */
+	
+	int deleteGoodSizeById(int id);
+	
+	
+	/*
+	 * 增加商品图片
+	 * */
+	
+	int addGoodPic(GoodPictureBean goodPictureBean);
+	
+	/*
+	 * 更新商品图片
+	 * */
+	
+	int updateGoodPic(GoodPictureBean goodPictureBean);
+	
+	
+	/*
+	 * 按商品查询商品图片
+	 * */
+	
+	List<GoodPictureBean> getGoodPicByGoodId(int goodId);
+	
+	/*
+	 * 删除商品图片
+	 * */
+	
+	int deleteGoodPicById(int id);
+	
+	
 	
 	
 	
