@@ -8,7 +8,7 @@
 		INSERT INTO
 			good_size(good_id,good_size,good_size_price,good_size_bak)
 		VALUES
-			(#{goodId},#{goodSize},#{goodPrice},#{goodSizeBak);
+			(#{goodId},#{goodSize},#{goodSizePrice},#{goodSizeBak);
 			
 	</insert>
 	<select id="getGoodSizeByGoodId"  resultType="com.xianzhi.bean.GoodSizeBean">
