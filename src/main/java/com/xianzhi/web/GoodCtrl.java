@@ -38,7 +38,8 @@ public class GoodCtrl {
 
 	@RequestMapping(value = "/addGood", method = RequestMethod.POST)
 	public int addGood(GoodsBean goods) throws JsonParseException, JsonMappingException, IOException {
-		  return goodsService.insertGoods(goods);
+		  goodsService.insertGoods(goods);
+		  return goods.getGoodId();
 	}
 	
 	
