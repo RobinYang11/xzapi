@@ -79,7 +79,7 @@ public class GoodCtrl {
 	/*
 	 * 增加商品图片
 	 */
-	@RequestMapping(value = "/addGoodPic", method = RequestMethod.POST)
+	@RequestMapping(value = "/addGoodImg", method = RequestMethod.POST)
 	public int  addGoodImg(int goodId, MultipartFile file) {
 		GoodPictureBean goodPictureBean =new GoodPictureBean();
 		 return goodsService.addGoodPic(goodPictureBean);
@@ -88,7 +88,7 @@ public class GoodCtrl {
 	/*
 	 * 增加商品图片
 	 */
-	@RequestMapping(value = "/addGoodPic", method = RequestMethod.POST)
+	@RequestMapping(value = "/getGoodImgByGoodId", method = RequestMethod.POST)
 	public List<GoodPictureBean>  getGoodImgByGoodId(int goodId) {
 		 return goodsService.getGoodPicByGoodId(goodId);
 	}
