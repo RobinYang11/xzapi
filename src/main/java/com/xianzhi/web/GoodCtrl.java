@@ -2,6 +2,7 @@ package com.xianzhi.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class GoodCtrl {
 	 * 增加商品规格
 	 */
 	@RequestMapping(value = "/addGoodSize", method = RequestMethod.POST)
+	@ResponseBody
 	public int  addGoodSize(GoodSizeBean goodSizeBean) {
 		return goodsService.addGoodSize(goodSizeBean);
 	}
@@ -81,10 +83,25 @@ public class GoodCtrl {
 	/*
 	 * 增加商品图片
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/addGoodImg", method = RequestMethod.POST)
-	public int  addGoodImg(int goodId, MultipartFile file) {
+	public int  addGoodImg(int goodId, MultipartFile file) throws IllegalStateException, IOException {
+		
+		String server = request.getServerName();
+		String port = String.valueOf(request.getServerPort());
+		String basePath=PathUtil.getBaseImgPath();
+		String realPath=PathUtil.getGoodImagePath(goodId);
+		PathUtil.makeDir(basePath+realPath);
+		String imgName = ImageUtil.getRandomFileName() + ".png";
+		String fullName = basePath + realPath + imgName;
+		System.out.println(fullName);
+		File tempFile = new File(fullName);
+		file.transferTo(tempFile);
+		
 		GoodPictureBean goodPictureBean =new GoodPictureBean();
-		 return goodsService.addGoodPic(goodPictureBean);
+		goodPictureBean.setGoodId(goodId);
+		goodPictureBean.setGoodPicPath(PathUtil.getVirtualPath(server, port, realPath, imgName));
+		return goodsService.addGoodPic(goodPictureBean);
 	}
 	
 	/*
