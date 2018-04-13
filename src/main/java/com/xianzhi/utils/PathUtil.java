@@ -72,8 +72,7 @@ public class PathUtil {
 
 	public static String getShopImagePath(long shopId) {
 
-		String basePath = getBaseImgPath();
-		String imagePath = basePath + "/shopImg/" + shopId + "/";
+		String imagePath ="/shopImg/" + shopId + "/";
 		return imagePath.replace("/", seperator);
 	}
 
@@ -83,9 +82,7 @@ public class PathUtil {
 	 * @author:robin
 	 */
 	public static String getGoodImagePath(int goodId) {
-
-		String basePath = getBaseImgPath();
-		String imagePath = basePath + "/shopImg/" + goodId + "/";
+		String imagePath ="/shopImg/" + goodId + "/";
 		return imagePath.replace("/", seperator);
 	}
 
