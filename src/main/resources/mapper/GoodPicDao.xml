@@ -35,7 +35,7 @@
      <delete id="deleteGoodPicById">
     	DELETE FROM 
 			good_pic
-		WHERE id=#{id}
+		WHERE good_pic_id=#{goodPicId}
     </delete>
     
 	
