@@ -97,11 +97,11 @@ public class GoodCtrl {
 		System.out.println(fullName);
 		File tempFile = new File(fullName);
 		file.transferTo(tempFile);
-		
 		GoodPictureBean goodPictureBean =new GoodPictureBean();
 		goodPictureBean.setGoodId(goodId);
 		goodPictureBean.setGoodPicPath(PathUtil.getVirtualPath(server, port, realPath, imgName));
-		return goodsService.addGoodPic(goodPictureBean);
+		goodsService.addGoodPic(goodPictureBean);
+		return  goodPictureBean.getGoodId();
 	}
 	
 	/*
@@ -269,7 +269,7 @@ public class GoodCtrl {
 		goodBrandBean.setGoodBrandLogo(PathUtil.getVirtualPath(server, port, imgPath, imgName));
 		goodBrandBean.setGoodBrandName(goodBrandName);
 		goodBrandBean.setGoodBrandDesc(goodBrandDesc);
-		return goodsService.addGoodBrand(goodBrandBean);
+		return goodsService.addGoodBrand(goodBrandBean); 
 	}
 
 	/*
