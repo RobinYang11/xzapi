@@ -101,7 +101,7 @@ public class GoodCtrl {
 		goodPictureBean.setGoodId(goodId);
 		goodPictureBean.setGoodPicPath(PathUtil.getVirtualPath(server, port, realPath, imgName));
 		goodsService.addGoodPic(goodPictureBean);
-		return  goodPictureBean.getGoodId();
+		return  goodPictureBean.getGoodPicId();
 	}
 	
 	/*
@@ -111,7 +111,6 @@ public class GoodCtrl {
 	public List<GoodPictureBean>  getGoodImgByGoodId(int goodId) {
 		 return goodsService.getGoodPicByGoodId(goodId);
 	}
-	
 	/*
 	 * 更新商品图片
 	 */
